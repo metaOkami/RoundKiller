@@ -46,7 +46,7 @@ public class Pool : MonoBehaviour
             {
                 //Creamos una referencia para guardar GameObjects en la lista y también los instanciamos en la escena
                 GameObject obj = Instantiate(item.prefab);
-                obj.SetActive(true);
+                obj.SetActive(false);
                 //Los añadimos a la lista
                 pooledItems.Add(obj);
             }
@@ -54,11 +54,24 @@ public class Pool : MonoBehaviour
 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
+    private void Update() {
+        //Los enemigos saldrán si el número aleatorio entre 0 y 100 sale menor que 5
+        if (Random.Range(0, 100) < 5)
+        {
+            //Creamos una referencia al objeto de la lista de objetos creados mediante el Pool
+            GameObject a = Pool.singleton.Get("Enemigo");
+            //Si el objeto que he recibido no está vacío(osea que se puede usar)
+            if (a != null)
+            {
+                //Le pasamos una posición a ese enemigo concreto
+                a.transform.position = this.transform.position + new Vector3(Random.Range(-10, 10), 0, 0);
+                //Y activamos el enemigo
+                a.SetActive(true);
+            }
+        }
     }
+
+    
 
     //Método que nos devolverá un GameObject asociado a una tag
     public GameObject Get(string tag)
