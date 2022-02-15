@@ -71,7 +71,6 @@ public class Pool : MonoBehaviour
         }
     }
 
-    
 
     //Método que nos devolverá un GameObject asociado a una tag
     public GameObject Get(string tag)

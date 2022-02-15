@@ -14,7 +14,6 @@ public class PlayerController : MonoBehaviour
     //Variable que contiene el rigidbody del personaje principal
     Rigidbody rb;
     private Vector2 movement;
-    
 
     private void Awake() {
         //Inicializamos la variable que contiene el asset creado del input system
